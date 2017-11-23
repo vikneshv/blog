@@ -6,8 +6,8 @@
    
     "strict": true,                            
    "sourceMap": true,
-    "noImplicitThis": true,              
-"outDir": "new.js"
+    "noImplicitThis": true             
+
   }
 
 }

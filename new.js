@@ -3,21 +3,25 @@ $(selector).on('click', function () {
     $(selector).removeClass('active');
     $(this).addClass('active');
 });
-fetch('https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc')
-    .then(function (response) {
-    return response.json();
-})
-    .then(function (title) {
-    console.log('title:', obj.title);
-})["catch"](function (reason) {
-    console.log('The reason for the error:', reason);
+var promise = fetch('https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc');
+promise.then(function (response) { return response.json(); })
+    .then(function (data) {
+    $.each(data, function (index, obj) {
+        var title = obj.title;
+        var blog_id = obj.id;
+        $("#blog_id").prepend('<img src="1600.png" width="60px" height="60px" />&nbsp;&nbsp;<b>Title:</b>&nbsp;' + title +
+            '<br>' + blog_id + ' </br>');
+    });
+});
+$('#new_blog').click(function () {
+    $('#main_body').load("add.html");
 });
 function returnfunction() {
     $('#main_body').load("index.html");
 }
 function myfunction() {
-    var title = document.getElementById("title").value;
-    var text = document.getElementById("content").value;
+    var title = $("title").val();
+    var text = $("content").val();
     $.ajax({
         url: "https://jsonprovider.herokuapp.com/posts",
         type: 'POST',
