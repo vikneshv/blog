@@ -31,7 +31,6 @@ const returnfunction = () =>
     $('#main_body').load("index.html");
 }
 const myfunction = () =>{
- 
     var title =(<HTMLInputElement> document.getElementById("#title")).value;
     var msg = (<HTMLInputElement>document.getElementById("#content")).value;
     $.ajax({
@@ -42,7 +41,7 @@ const myfunction = () =>{
               "body" : msg,
               "userId" : 1
             }),
-        
+       
           dataType: 'json',
           async: false,
           success: function(message) {
