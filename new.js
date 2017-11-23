@@ -30,7 +30,6 @@ var myfunction = function () {
             "body": msg,
             "userId": 1
         }),
-        contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: false,
         success: function (message) {
