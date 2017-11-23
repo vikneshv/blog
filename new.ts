@@ -30,11 +30,10 @@ const returnfunction = () =>
  {
     $('#main_body').load("index.html");
 }
-
-function myfunction(){
-     "https://jsonprovider.herokuapp.com/posts";
-    var title =(<HTMLInputElement> document.getElementById("title")).value;
-    var msg = (<HTMLInputElement>document.getElementById("content")).value;
+const myfunction = () =>{
+ 
+    var title =(<HTMLInputElement> document.getElementById("#title")).value;
+    var msg = (<HTMLInputElement>document.getElementById("#content")).value;
     $.ajax({
           url: "https://jsonprovider.herokuapp.com/posts",
           type: 'POST',

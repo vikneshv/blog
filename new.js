@@ -19,10 +19,9 @@ $('#new_blog').click(function () {
 var returnfunction = function () {
     $('#main_body').load("index.html");
 };
-function myfunction() {
-    "https://jsonprovider.herokuapp.com/posts";
-    var title = document.getElementById("title").value;
-    var msg = document.getElementById("content").value;
+var myfunction = function () {
+    var title = document.getElementById("#title").value;
+    var msg = document.getElementById("#content").value;
     $.ajax({
         url: "https://jsonprovider.herokuapp.com/posts",
         type: 'POST',
@@ -38,4 +37,4 @@ function myfunction() {
             $("#main_body").load("main.html");
         }
     });
-}
+};
