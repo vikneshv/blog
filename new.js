@@ -16,24 +16,25 @@ promise.then(function (response) { return response.json(); })
 $('#new_blog').click(function () {
     $('#main_body').load("add.html");
 });
-function returnfunction() {
+var returnfunction = function () {
     $('#main_body').load("index.html");
-}
+};
 function myfunction() {
-    var title = $("title").val();
-    var text = $("content").val();
+    "https://jsonprovider.herokuapp.com/posts";
+    var title = document.getElementById("title").value;
+    var msg = document.getElementById("content").value;
     $.ajax({
         url: "https://jsonprovider.herokuapp.com/posts",
         type: 'POST',
         data: JSON.stringify({
             "title": title,
-            "body": text,
+            "body": msg,
             "userId": 1
         }),
+        contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: false,
-        success: function (msg) {
-            //console.log("success");
+        success: function (message) {
             $("#main_body").load("main.html");
         }
     });
