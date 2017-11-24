@@ -30,23 +30,23 @@ const returnfunction = () =>
 }
 const myfunction = ()=>
 {
-
-    var title =(<HTMLInputElement>document.getElementById("title")).value;
-    var msg = (<HTMLInputElement>document.getElementById("content")).value;
+    var title = $('title').val();
+    var msg = $('content').val();
+    
+   
     $.ajax({
-          url: 'post_url',
+          url: post_url,
           type: 'POST',
           data: JSON.stringify({
               "title": title,
               "body" : msg,
               "userId" : 1
             }),
-            contentType: 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
            
-          dataType: 'json',
-          async: false,
-          success: function(message) {
-          $("#main_body").load("main.html");
-             }
+        dataType: 'json',
+        success: function(message) {
+        $("#main_body").load("main.html");
+         }
         });
 }

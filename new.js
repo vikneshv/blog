@@ -27,10 +27,10 @@ var returnfunction = function () {
 };
 //post method
 var myfunction = function () {
-    var title = document.getElementById("title").value;
-    var msg = document.getElementById("content").value;
+    var title = $('title').val();
+    var msg = $('content').val();
     $.ajax({
-        url: 'post_url',
+        url: post_url,
         type: 'POST',
         data: JSON.stringify({
             "title": title,
@@ -39,7 +39,6 @@ var myfunction = function () {
         }),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        async: false,
         success: function (message) {
             $("#main_body").load("main.html");
         }
