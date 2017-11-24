@@ -35,7 +35,7 @@ const myfunction = ()=>
     
     var title = $('#title').val();
     var msg = $('#content').val();
-    if(title==" " &&  msg==" " )
+    if(title=="" &&  msg=="" )
     alert("please enter the value");
     else
     {
