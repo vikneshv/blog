@@ -1,5 +1,6 @@
-const post_url="https://jsonprovider.herokuapp.com/posts";
-const fetch_url="https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc";
+let post_url="https://jsonprovider.herokuapp.com/posts";
+let fetch_url="https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc";
+
 var selector = '#nav li';
 $(selector).on('click', function () {
     $(selector).removeClass('active');
@@ -27,18 +28,21 @@ const returnfunction = () =>
 {
  $('#main_body').load("index.html");
 }
-const myfunction = () =>{
-    var title =(<HTMLInputElement>document.getElementById("#title")).value;
-    var msg = (<HTMLInputElement>document.getElementById("#content")).value;
+const myfunction = ()=>
+{
+
+    var title =(<HTMLInputElement>document.getElementById("title")).value;
+    var msg = (<HTMLInputElement>document.getElementById("content")).value;
     $.ajax({
-          url: post_url,
+          url: 'post_url',
           type: 'POST',
           data: JSON.stringify({
               "title": title,
               "body" : msg,
               "userId" : 1
             }),
-       
+            contentType: 'application/json; charset=utf-8',
+           
           dataType: 'json',
           async: false,
           success: function(message) {
