@@ -1,11 +1,11 @@
-//active function
+var post_url = "https://jsonprovider.herokuapp.com/posts";
+var fetch_url = "https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc";
 var selector = '#nav li';
 $(selector).on('click', function () {
     $(selector).removeClass('active');
     $(this).addClass('active');
 });
-//api get method fetching using promise
-var promise = fetch('https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc');
+var promise = fetch(fetch_url);
 promise.then(function (response) { return response.json(); })
     .then(function (data) {
     $.each(data, function (index, obj) {
@@ -15,21 +15,17 @@ promise.then(function (response) { return response.json(); })
             '<br>' + blog_id + ' </br>');
     });
 });
-
-//load on click
 $('#new_blog').click(function () {
     $('#main_body').load("add.html");
 });
-//back button
 var returnfunction = function () {
     $('#main_body').load("index.html");
 };
-//post method
 var myfunction = function () {
     var title = document.getElementById("#title").value;
     var msg = document.getElementById("#content").value;
     $.ajax({
-        url: "https://jsonprovider.herokuapp.com/posts",
+        url: post_url,
         type: 'POST',
         data: JSON.stringify({
             "title": title,
