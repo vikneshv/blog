@@ -1,34 +1,35 @@
-var post_url = "https://jsonprovider.herokuapp.com/posts";
-var fetch_url = "https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc";
+var post_url="https://jsonprovider.herokuapp.com/posts";
+var fetch_url="https://jsonprovider.herokuapp.com/posts/?limit=50&sort=id+desc";
 //active function
 var selector = '#nav li';
 $(selector).on('click', function () {
-    $(selector).removeClass('active');
-    $(this).addClass('active');
+$(selector).removeClass('active');
+$(this).addClass('active');
 });
-//api get method fetching using promise
+//api get method fetching using promise      
 var promise = fetch(fetch_url);
 promise.then(function (response) { return response.json(); })
-    .then(function (data) {
-    $.each(data, function (index, obj) {
-        var title = obj.title;
-        var blog_id = obj.id;
+.then(function (data)
+{
+$.each(data, function (index, data){
+        var title=data.title;
+        var msg=data.body;
         $("#blog_id").prepend('<img src="1600.png" width="60px" height="60px" />&nbsp;&nbsp;<b>Title:</b>&nbsp;' + title +
-            '<br>' + blog_id + ' </br>');
+        '<br><b>msg:</b>' + msg + '</br>');
     });
 });
 //load on click
 $('#new_blog').click(function () {
-    $('#main_body').load("add.html");
+$('#main_body').load("add.html");
 });
 //back button
 var returnfunction = function () {
-    $('#main_body').load("index.html");
+ $('#main_body').load("index.html");
 };
 //post method
 var myfunction = function () {
-    var title = $('title').val();
-    var msg = $('content').val();
+    var title = $('#title').val();
+    var msg = $('#content').val();
     $.ajax({
         url: post_url,
         type: 'POST',
