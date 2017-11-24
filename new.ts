@@ -6,6 +6,8 @@ $(selector).on('click', function () {
 $(selector).removeClass('active');
 $(this).addClass('active');
 });
+
+
 //api get method fetching using promise      
 let promise =fetch(fetch_url);   
 promise.then(response => response.json())        
@@ -18,7 +20,7 @@ $("#blog_id").prepend('<img src="1600.png" width="60px" height="60px" />&nbsp;&n
 '<br><b>msg:</b>'+msg+'</br>');                             
  });          
  });
-//load on click
+//load on click 
 $('#new_blog').click(()=> {
 $('#main_body').load("add.html");
 });
@@ -30,8 +32,13 @@ $('#main_body').load("index.html");
 //post method
 const myfunction = ()=>
 {
+    
     var title = $('#title').val();
     var msg = $('#content').val();
+    if(title==" " &&  msg==" " )
+    alert("please enter the value");
+    else
+    {
     $.ajax({
           url:post_url,
           type:'POST',
@@ -42,8 +49,11 @@ const myfunction = ()=>
             }),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
-    success: function(message) {
+    success: (message)=> {
     $("#main_body").load("main.html");
     }
     });
+    
+ 
+}
 }
